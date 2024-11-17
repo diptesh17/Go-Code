@@ -1,0 +1,5 @@
+- Make FOlder
+- Make file main.go
+- terminal : go mod init myLearning => go.mod file created
+- Write code inside main.go
+- terminal : go run main.go
