@@ -15,7 +15,7 @@ import "fmt"
 func divide(a, b float64) (float64, error) {
 
 	if b == 0 {
-		return 0, fmt.Errorf("Deno is 0")
+		return 0, fmt.Errorf("deno is 0")
 	}
 
 	return a / b, nil
