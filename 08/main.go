@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	fmt.Println("Arrays in GO ")
@@ -11,5 +13,9 @@ func main() {
 	fmt.Println("Your name : ", name)
 
 	var numbers = [5]int{1, 2, 3, 4, 5}
-	fmt.Println(numbers)
+	fmt.Println(numbers, len(numbers))
+
+	var ids [5]string
+	fmt.Println(ids)
+
 }
