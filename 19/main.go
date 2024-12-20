@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"io"
 	"os"
 )
 
@@ -29,31 +28,44 @@ func main() {
 
 	*/
 
-	// Reading context of file
-	file, err := os.Open("Example.txt")
+	/*
+		--  Reading context of file
+		file, err := os.Open("Example.txt")
+		if err != nil {
+			fmt.Println("Error in file opening : ", err)
+			return
+		}
+		defer file.Close()
+
+		// create buffer
+		buffer := make([]byte, 1024)
+
+		// Read context
+		for {
+			n, err := file.Read(buffer)
+
+			if err == io.EOF {
+				break
+			}
+			if err != nil {
+				fmt.Println("Error while reading file : ", err)
+				break
+
+			}
+
+			// Process read : read from buffer 0 till n , convert to string & print
+			fmt.Println(string(buffer[:n]))
+
+	*/
+
+	// Problem with this : It entirely loads file content into memory , for large data , it may create some memories issue
+	// byte way : pic in chunks and retrive
+	// ioutil.ReadFile is deprecated instead we use os.ReadFile
+	content, err := os.ReadFile("Example.txt")
 	if err != nil {
-		fmt.Println("Error in file opening : ", err)
+		fmt.Println("Error while reading file : ", err)
 		return
 	}
-	defer file.Close()
 
-	// create buffer
-	buffer := make([]byte, 1024)
-
-	// Read context
-	for {
-		n, err := file.Read(buffer)
-
-		if err == io.EOF {
-			break
-		}
-		if err != nil {
-			fmt.Println("Error while reading file : ", err)
-			break
-
-		}
-
-		// Process read : read from buffer 0 till n , convert to string & print
-		fmt.Println(string(buffer[:n]))
-	}
+	fmt.Println(string(content))
 }
